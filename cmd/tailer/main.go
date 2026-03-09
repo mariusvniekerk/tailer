@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/mvanniekerk/tailer/internal/tailer"
+	"github.com/mariusvniekerk/tailer/internal/tailer"
 	"github.com/spf13/cobra"
 )
 

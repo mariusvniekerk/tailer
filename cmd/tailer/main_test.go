@@ -3,10 +3,13 @@ package main
 import (
 	"context"
 	"io"
+	"os"
+	"path/filepath"
+	"strings"
 	"testing"
 	"time"
 
-	"github.com/mvanniekerk/tailer/internal/tailer"
+	"github.com/mariusvniekerk/tailer/internal/tailer"
 	"github.com/stretchr/testify/require"
 )
 
@@ -36,4 +39,18 @@ func TestNewRootCmdPassesFlagsToRunner(t *testing.T) {
 
 	require.NoError(t, cmd.Execute())
 	require.True(t, called)
+}
+
+func TestModulePathMatchesPublishedRepository(t *testing.T) {
+	t.Parallel()
+
+	goModPath := filepath.Join("..", "..", "go.mod")
+	goModBytes, err := os.ReadFile(goModPath)
+	require.NoError(t, err)
+
+	require.True(
+		t,
+		strings.HasPrefix(string(goModBytes), "module github.com/mariusvniekerk/tailer\n"),
+		"go.mod should declare the published GitHub module path",
+	)
 }

@@ -1,4 +1,4 @@
-module github.com/mvanniekerk/tailer
+module github.com/mariusvniekerk/tailer
 
 go 1.26.0
 

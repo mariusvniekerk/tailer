@@ -12,6 +12,12 @@ Build and install from this repository:
 go install ./cmd/tailer
 ```
 
+Install a tagged release directly:
+
+```bash
+go install github.com/mariusvniekerk/tailer/cmd/tailer@latest
+```
+
 The binary will be installed to `GOBIN` if it is set. Otherwise Go installs it to `$(go env GOPATH)/bin`.
 
 For example:
